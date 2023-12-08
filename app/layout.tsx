@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/providers/QueryProvider";
+import SidebarProvider from "@/contexts/SidebarProvider";
+import SideBar from "@/components/sidebar";
+import { Toaster } from "@/components/ui/toaster";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,7 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <SidebarProvider>
+            <SideBar />
+            <Toaster />
+            {children}
+          </SidebarProvider>
+        </QueryProvider>
       </body>
     </html>
   );
