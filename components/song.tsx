@@ -1,15 +1,19 @@
 "use client";
+// Import the necessary modules
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Pause, Play } from "lucide-react";
 
-// Assuming that /assets/sound.wav is a valid path to your audio file
-const audioPath = "/assets/sound.wav";
+// Import the audio file
+// import audioPath from "/assets/sound2.mp3";
 
 const SongMPThree: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Reference to the audio element
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // Function to toggle play/pause
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
@@ -30,8 +34,8 @@ const SongMPThree: React.FC = () => {
 
   return (
     <>
-      <div className="hidden">
-        <audio ref={audioRef} src={audioPath} autoPlay={false} />
+      <div className="">
+        <audio ref={audioRef} src={"/assets/sound2.mp3"} autoPlay={false} />
       </div>
       <Button
         type="button"
