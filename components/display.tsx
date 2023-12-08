@@ -4,6 +4,7 @@ import React from "react";
 
 const Display = ({ answer }: { answer: string }) => {
   const splitted = answer.toLocaleUpperCase().split(" ");
+
   const { guessed } = useSidebar();
 
   return (

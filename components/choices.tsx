@@ -29,19 +29,19 @@ const Choices = ({ answer }: { answer: string }) => {
   const [showPopup, setShowPopup] = React.useState(false);
 
   useEffect(() => {
-    if (game.getMistakes() < 3 && game.getMistakes() !== 0) {
+    if (game.getMistakes() < 3) {
       // Show the pop-up if the number of mistakes is equal to or exceeds 3
       setShowPopup(true);
 
       // Set a timeout to hide the pop-up after 1000 milliseconds (1 second)
       const timeoutId = setTimeout(() => {
         setShowPopup(false);
-      }, 1000);
+      }, 1400);
 
       // Clean up the timeout when the component unmounts or when showPopup changes
       return () => clearTimeout(timeoutId);
     }
-  }, [game.getMistakes()]);
+  }, [game.getMistakes(), game]);
 
   if (game.getMistakes() >= 3) {
     return (
@@ -62,7 +62,7 @@ const Choices = ({ answer }: { answer: string }) => {
 
   return (
     <>
-      {showPopup && (
+      {showPopup && game.getMistakes() !== 0 && (
         <div className="fixed inset-0 flex justify-center items-center text-red-500 z-[100] text-[24rem] font-black">
           X
         </div>

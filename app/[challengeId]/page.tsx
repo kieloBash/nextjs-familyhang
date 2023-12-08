@@ -4,9 +4,7 @@ import React from "react";
 import connectDB from "@/lib/mongodb";
 import Challenge from "@/lib/models/challenge.model";
 import { ChallengeType } from "@/lib/interface/challenge";
-import Display from "@/components/display";
-import Choices from "@/components/choices";
-import Scoreboard from "@/components/scoreboard";
+import SingleComponent from "@/components/single-component";
 
 async function fetchSingleChallenge(_id: string) {
   try {
@@ -52,9 +50,7 @@ const ChallengePage = async ({
       <h1 className="text-center text-2xl mb-4 font-medium">
         {single.data?.question}
       </h1>
-      <Display answer={single.data?.answer as string} />
-      <Choices answer={single.data?.answer as string} />
-      <Scoreboard />
+      <SingleComponent answer={single.data?.answer as string} />
     </main>
   );
 };
