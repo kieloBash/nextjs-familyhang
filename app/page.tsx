@@ -12,7 +12,7 @@ export default function Home() {
       <h1
         className={`${anton.className} text-center text-9xl text-green-300 drop-shadow-md`}
       >
-        XMas Family <br /> Fortune
+        Christmas Family <br /> Fortune
       </h1>
     </main>
   );

@@ -6,6 +6,7 @@ import SidebarProvider from "@/contexts/SidebarProvider";
 import SideBar from "@/components/sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import GameProvider from "@/providers/GameProvider";
+import SongMPThree from "@/components/song";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
               <SideBar />
               <Toaster />
               {children}
+              <SongMPThree />
             </GameProvider>
           </SidebarProvider>
         </QueryProvider>
