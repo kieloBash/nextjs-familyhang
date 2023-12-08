@@ -9,12 +9,12 @@ const Scoreboard = () => {
     <div className="fixed bottom-4 right-4 p-4 w-56 bg-green-400 grid grid-cols-5 text-2xl">
       <span className="col-span-2 font-medium">Lives</span>
       <div className="col-span-3 flex justify-start items-center">
-        {Array(5 - game.getMistakes())
+        {Array(3 - game.getMistakes())
           .fill([])
           .map((_, index) => {
             return (
               <div key={index} className="">
-                <Heart className="w-6 h-6 fill-red-500" />
+                <Heart className="w-8 h-8 fill-red-500" />
               </div>
             );
           })}

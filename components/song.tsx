@@ -4,9 +4,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Pause, Play } from "lucide-react";
 
-// Import the audio file
-// import audioPath from "/assets/sound2.mp3";
-
 const SongMPThree: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -28,14 +25,14 @@ const SongMPThree: React.FC = () => {
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.autoplay = true;
+      audioRef.current.autoplay = false;
     }
   }, []);
 
   return (
     <>
       <div className="">
-        <audio ref={audioRef} src={"/assets/sound2.mp3"} autoPlay={false} />
+        <audio ref={audioRef} src={"/assets/bg-1.mp3"} autoPlay={false} />
       </div>
       <Button
         type="button"
