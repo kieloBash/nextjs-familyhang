@@ -6,6 +6,7 @@ import Challenge from "@/lib/models/challenge.model";
 import { ChallengeType } from "@/lib/interface/challenge";
 import Display from "@/components/display";
 import Choices from "@/components/choices";
+import Scoreboard from "@/components/scoreboard";
 
 async function fetchSingleChallenge(_id: string) {
   try {
@@ -47,12 +48,13 @@ const ChallengePage = async ({
   if (!single.success) return null;
 
   return (
-    <main className="min-h-screen w-full flex flex-col justify-center items-center">
+    <main className="min-h-screen w-full flex flex-col justify-center items-center relative">
       <h1 className="text-center text-2xl mb-4 font-medium">
         {single.data?.question}
       </h1>
       <Display answer={single.data?.answer as string} />
-      <Choices />
+      <Choices answer={single.data?.answer as string} />
+      <Scoreboard />
     </main>
   );
 };

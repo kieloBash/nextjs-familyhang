@@ -5,6 +5,7 @@ import { QueryProvider } from "@/providers/QueryProvider";
 import SidebarProvider from "@/contexts/SidebarProvider";
 import SideBar from "@/components/sidebar";
 import { Toaster } from "@/components/ui/toaster";
+import GameProvider from "@/providers/GameProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,9 +27,11 @@ export default function RootLayout({
       <body className={poppins.className}>
         <QueryProvider>
           <SidebarProvider>
-            <SideBar />
-            <Toaster />
-            {children}
+            <GameProvider>
+              <SideBar />
+              <Toaster />
+              {children}
+            </GameProvider>
           </SidebarProvider>
         </QueryProvider>
       </body>
