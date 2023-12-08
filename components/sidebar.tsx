@@ -108,8 +108,8 @@ const SideBar = () => {
                     key={index}
                     className={`${activeClass} text-left w-full rounded-md flex justify-between items-center`}
                   >
-                    <Link href={`/${q._id}`}>
-                      <button type="button" className="flex-1 p-2 text-left">
+                    <Link href={`/${q._id}`} className="flex-1">
+                      <button type="button" className="w-full p-2 text-left">
                         <span>Question {index + 1}.</span>
                       </button>
                     </Link>

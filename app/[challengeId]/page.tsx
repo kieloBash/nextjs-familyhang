@@ -5,6 +5,7 @@ import connectDB from "@/lib/mongodb";
 import Challenge from "@/lib/models/challenge.model";
 import { ChallengeType } from "@/lib/interface/challenge";
 import Display from "@/components/display";
+import Choices from "@/components/choices";
 
 async function fetchSingleChallenge(_id: string) {
   try {
@@ -50,7 +51,8 @@ const ChallengePage = async ({
       <h1 className="text-center text-2xl mb-4 font-medium">
         {single.data?.question}
       </h1>
-      <Display />
+      <Display answer={single.data?.answer as string} />
+      <Choices />
     </main>
   );
 };
