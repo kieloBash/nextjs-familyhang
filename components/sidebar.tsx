@@ -11,7 +11,7 @@ import useFetchQuestions from "@/hooks/getChallenges";
 import AddQuestionDialog from "@/modals/add-question";
 
 const SideBar = () => {
-  const { toggle, setToggle, activeQuestion, setActiveQuestion } = useSidebar();
+  const { toggle, setToggle } = useSidebar();
   const [openDialog, setOpenDialog] = useState(false);
 
   const pathname = usePathname();
@@ -61,7 +61,7 @@ const SideBar = () => {
         >
           <X />
         </button>
-        <Link href={"/"} onClick={() => setActiveQuestion(null)}>
+        <Link href={"/"}>
           <h1 className="font-bold text-xl">XMas Games</h1>
         </Link>
         {questions.isLoading ? (
@@ -108,17 +108,11 @@ const SideBar = () => {
                     key={index}
                     className={`${activeClass} text-left w-full rounded-md flex justify-between items-center`}
                   >
-                    <button
-                      type="button"
-                      onClick={() => {
-                        router;
-                        setActiveQuestion(q);
-                        router.push(`/${q._id}`);
-                      }}
-                      className="flex-1 p-2 text-left"
-                    >
-                      <span>Question {index + 1}.</span>
-                    </button>
+                    <Link href={`/${q._id}`}>
+                      <button type="button" className="flex-1 p-2 text-left">
+                        <span>Question {index + 1}.</span>
+                      </button>
+                    </Link>
                     <Button
                       type="button"
                       variant={"ghost"}
