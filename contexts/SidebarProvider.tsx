@@ -8,6 +8,8 @@ export type SidebarContextType = {
   setToggle: (temp: boolean) => void;
   turn: TurnType;
   setTurn: (index: TurnType) => void;
+  guessed: string[];
+  setGuessed: (index: string[]) => void;
 };
 
 export const SidebarContext = React.createContext<SidebarContextType>({
@@ -15,6 +17,8 @@ export const SidebarContext = React.createContext<SidebarContextType>({
   setToggle: (index: boolean) => {},
   turn: null,
   setTurn: (index: TurnType) => {},
+  guessed: [],
+  setGuessed: (index: string[]) => {},
 });
 
 export const useSidebar = () => React.useContext(SidebarContext);
@@ -22,6 +26,8 @@ export const useSidebar = () => React.useContext(SidebarContext);
 const SidebarProvider = ({ children }: { children: React.ReactNode }) => {
   const [turn, setTurn] = React.useState<TurnType>(null);
   const [toggle, setToggle] = React.useState<boolean>(false);
+  const [guessed, setGuessed] = React.useState<string[]>([]);
+
   return (
     <SidebarContext.Provider
       value={{
@@ -29,6 +35,8 @@ const SidebarProvider = ({ children }: { children: React.ReactNode }) => {
         setToggle,
         turn,
         setTurn,
+        guessed,
+        setGuessed,
       }}
     >
       {children}

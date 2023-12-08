@@ -1,48 +1,38 @@
+"use client";
+import { useSidebar } from "@/contexts/SidebarProvider";
 import React from "react";
 
 const Display = ({ answer }: { answer: string }) => {
-  let temp = "It is more fun in the Philippines";
-  const splitted = temp.toLocaleUpperCase().split(" ");
-  let displayQuestion: string[] = [];
-
-  splitted.map((word) => {
-    for (let i = 0; i < word.length; i++) {
-      displayQuestion.push(word.charAt(i));
-    }
-    displayQuestion.push("-");
-  });
+  const splitted = answer.toLocaleUpperCase().split(" ");
+  const { guessed } = useSidebar();
 
   return (
-    <section className="grid grid-rows-4 border gap-1 grid-container">
-      {Array(64)
-        .fill(displayQuestion)
-        .map((arr, index) => {
-          if (index < 16)
-            return (
-              <div
-                className="w-[4rem] h-[5.6rem] bg-green-600 border-2 flex justify-center items-center text-4xl text-white"
-                key={index}
-              ></div>
-            );
+    <section className="flex flex-wrap gap-1 w-full max-w-[60rem] justify-center items-center">
+      {splitted.map((word, i) => {
+        const wordArr = word.split("");
+        return (
+          <div className="flex" key={i}>
+            {wordArr.map((letter) => {
+              let shown = false;
+              if (guessed.includes(letter)) shown = true;
 
-          const value = arr[index-16];
-
-          if (value && value !== "-") {
-            return (
-              <div
-                className="w-[4rem] h-[5.6rem] bg-white border-2 flex justify-center items-center text-4xl text-black"
-                key={index}
-              >{value}</div>
-            );
-          } else
-            return (
-              <div
-                className="w-[4rem] h-[5.6rem] bg-green-600 border-2 flex justify-center items-center text-4xl text-white"
-                key={index}
-              ></div>
-            );
-        })}
+              return <Card key={letter} value={letter} shown={shown} />;
+            })}
+            <div className="w-12 h-full" />
+          </div>
+        );
+      })}
     </section>
+  );
+};
+
+const Card = ({ value, shown }: { value: string; shown: boolean }) => {
+  return (
+    <div
+      className={`bg-green-600 text-white w-[4rem] h-[5.6rem] border-2 flex justify-center items-center text-4xl`}
+    >
+      {shown ? value : null}
+    </div>
   );
 };
 
